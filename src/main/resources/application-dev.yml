@@ -1,0 +1,5 @@
+krpc:
+  name: 'krpc name'
+  dns: 'localhost'
+  rpc-port: 50000
+  stream-port: 50001
