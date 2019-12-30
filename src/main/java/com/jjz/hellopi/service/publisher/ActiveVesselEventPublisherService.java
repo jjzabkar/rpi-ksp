@@ -24,8 +24,8 @@ public class ActiveVesselEventPublisherService {
     public void publishActiveVesselEvent(SpaceCenterEvent event) throws RPCException, StreamException, InterruptedException {
         try {
             Stream<SpaceCenter.Vessel> vesselStream = event.getKrpcConnection().addStream(SpaceCenter.class, "getActiveVessel");
+            log.info("start Stream<Vessel> and publish ActiveVesselEvent");
             vesselStream.addCallback(vessel -> ctx.publishEvent(new ActiveVesselEvent(this, vessel, event.getKrpcConnection())));
-            log.info("subscribe to vessel");
             vesselStream.start();
         } catch (Exception e) {
             log.error(e.toString(), e);
