@@ -1,0 +1,27 @@
+package com.jjz.hellopi.service.publisher;
+
+import com.jjz.hellopi.event.KrpcConnectedEvent;
+import com.jjz.hellopi.event.SpaceCenterEvent;
+import krpc.client.RPCException;
+import krpc.client.StreamException;
+import krpc.client.services.SpaceCenter;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.event.EventListener;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.stereotype.Component;
+
+@Component
+@Slf4j
+@RequiredArgsConstructor
+public class SpaceCenterEventPublisherService {
+    private final ApplicationContext ctx;
+
+    @Async
+    @EventListener(KrpcConnectedEvent.class)
+    public void publishSpaceCenterEvent(KrpcConnectedEvent event) throws RPCException, StreamException {
+        SpaceCenter spaceCenter = SpaceCenter.newInstance(event.getKrpcConnection());
+        ctx.publishEvent(new SpaceCenterEvent(this, spaceCenter, event.getKrpcConnection()));
+    }
+}

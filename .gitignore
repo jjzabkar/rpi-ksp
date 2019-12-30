@@ -31,3 +31,4 @@ build/
 .vscode/
 jjz-python
 krpc
+deploy.sh

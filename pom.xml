@@ -46,6 +46,7 @@
 			</exclusions>
 		</dependency>
         <dependency>
+			<!-- manually installed to local .m2 repo -->
             <groupId>io.github.krpc</groupId>
             <artifactId>krpc-java</artifactId>
             <version>0.4.8</version>
@@ -71,6 +72,10 @@
             <artifactId>javatuples</artifactId>
             <version>1.2</version>
         </dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-webflux</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
