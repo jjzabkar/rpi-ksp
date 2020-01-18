@@ -1,6 +1,6 @@
 krpc:
   name: 'krpc running on Macbook Laptop'
-  dns: '192.168.1.5'
+  dns: '192.168.1.13'
   rpc-port: 50000
   stream-port: 50001
   http-test-port: 8080

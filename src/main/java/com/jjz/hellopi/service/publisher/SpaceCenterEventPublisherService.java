@@ -21,7 +21,11 @@ public class SpaceCenterEventPublisherService {
     @Async
     @EventListener(KrpcConnectedEvent.class)
     public void publishSpaceCenterEvent(KrpcConnectedEvent event) throws RPCException, StreamException {
-        SpaceCenter spaceCenter = SpaceCenter.newInstance(event.getKrpcConnection());
-        ctx.publishEvent(new SpaceCenterEvent(this, spaceCenter, event.getKrpcConnection()));
+        try {
+            SpaceCenter spaceCenter = SpaceCenter.newInstance(event.getKrpcConnection());
+            ctx.publishEvent(new SpaceCenterEvent(this, spaceCenter, event.getKrpcConnection()));
+        } catch (Exception e) {
+            log.error(e.toString());
+        }
     }
 }
