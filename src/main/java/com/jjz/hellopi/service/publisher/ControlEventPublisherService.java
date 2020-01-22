@@ -2,6 +2,8 @@ package com.jjz.hellopi.service.publisher;
 
 import com.jjz.hellopi.event.ActiveVesselEvent;
 import com.jjz.hellopi.event.ControlEvent;
+import com.jjz.hellopi.event.flight.RcsButtonEvent;
+import com.jjz.hellopi.event.flight.SasButtonEvent;
 import krpc.client.Stream;
 import krpc.client.services.SpaceCenter;
 import lombok.RequiredArgsConstructor;
@@ -21,25 +23,28 @@ public class ControlEventPublisherService {
     @EventListener(ActiveVesselEvent.class)
     public void publishControlEvent(ActiveVesselEvent event) {
         try {
-//            SpaceCenter.ReferenceFrame refFrame = event.getVessel().getSurfaceReferenceFrame();
-//            SpaceCenter.Flight flight = event.getVessel().flight(refFrame);
-//            Stream<Double> meanAltitudeStream = event.getKrpcConnection().addStream(flight, "getMeanAltitude");
-//            meanAltitudeStream.addCallback(x -> log.info("flight meanAltitude =    {}m", x));
-//            meanAltitudeStream.start();
-
             Stream<SpaceCenter.Control> controlStream = event.getKrpcConnection().addStream(event.getVessel(), "getControl");
             controlStream.addCallback(x -> ctx.publishEvent(new ControlEvent(this, x, event.getKrpcConnection())));
+
             SpaceCenter.Control control = controlStream.get();
             if (control != null) {
                 ctx.publishEvent(new ControlEvent(this, control, event.getKrpcConnection()));
+
+                Stream<Boolean> rcsStream = event.getKrpcConnection().addStream(control, "getRCS");
+                rcsStream.addCallback(x -> ctx.publishEvent(new RcsButtonEvent(this, x)));
+                log.info("start stream: RcsButtonEvent publisher");
+                rcsStream.start();
+
+                Stream<Boolean> sasStream = event.getKrpcConnection().addStream(control, "getSAS");
+                sasStream.addCallback(x -> ctx.publishEvent(new SasButtonEvent(this, x)));
+                log.info("start stream: SasButtonEvent publisher");
+                sasStream.start();
             }
 
-//            Stream<Double> apoapsisAltitudeStream = event.getKrpcConnection().addStream(event.getVessel().getOrbit(), "getApoapsisAltitude");
-//            apoapsisAltitudeStream.addCallback(x -> log.info("orbit apoapsisAltitude = {}m", x));
-//            apoapsisAltitudeStream.start();
-
+            log.info("start stream: ControlEvent publisher");
+            controlStream.start();
         } catch (Exception e) {
-            log.error(e.toString(), e);
+            log.error("Unable to publish Control events: " + e.toString(), e);
         }
     }
 }
