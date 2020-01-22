@@ -13,8 +13,8 @@ import org.springframework.context.event.EventListener;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
-@RequiredArgsConstructor
 @Component
+@RequiredArgsConstructor
 @Slf4j
 public class ActiveVesselEventPublisherService {
     private final ApplicationContext ctx;

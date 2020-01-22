@@ -13,7 +13,7 @@ public class GameSceneService {
     @Async
     @EventListener(GameSceneEvent.class)
     public void onGameSceneEvent(GameSceneEvent event) {
-        log.info("scene = {}", event.getGameScene());
+        log.info("scene = {} [NOOP]", event.getGameScene());
     }
 
 }

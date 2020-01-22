@@ -32,3 +32,4 @@ build/
 jjz-python
 krpc
 deploy.sh
+pi4j.log

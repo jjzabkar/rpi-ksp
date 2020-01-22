@@ -1,6 +1,5 @@
 package com.jjz.hellopi.service.publisher;
 
-import com.jjz.hellopi.event.ActiveVesselEvent;
 import com.jjz.hellopi.event.GameSceneEvent;
 import com.jjz.hellopi.event.KrpcConnectedEvent;
 import krpc.client.Stream;
@@ -24,6 +23,7 @@ public class GameSceneEventPublisherService {
         try {
             Stream<KRPC.GameScene> currentGameSceneStream = event.getKrpcConnection().addStream(KRPC.class, "getCurrentGameScene");
             currentGameSceneStream.addCallback(x -> ctx.publishEvent(new GameSceneEvent(this, x, event.getKrpcConnection())));
+            log.info("start stream: GameSceneEvent publisher");
             currentGameSceneStream.start();
         } catch (Exception e) {
             log.error(e.toString(), e);
