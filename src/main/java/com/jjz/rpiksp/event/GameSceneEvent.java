@@ -1,4 +1,4 @@
-package com.jjz.hellopi.event;
+package com.jjz.rpiksp.event;
 
 import krpc.client.Connection;
 import krpc.client.services.KRPC;
@@ -6,13 +6,13 @@ import lombok.Getter;
 import org.springframework.context.ApplicationEvent;
 
 @Getter
-public class KrpcConnectedEvent extends ApplicationEvent {
-    private final KRPC krpc;
+public class GameSceneEvent extends ApplicationEvent {
+    private final KRPC.GameScene gameScene;
     private final Connection krpcConnection;
 
-    public KrpcConnectedEvent(Object source, Connection krpcConnection, KRPC krpc) {
+    public GameSceneEvent(Object source, KRPC.GameScene gameScene, Connection krpcConnection) {
         super(source);
+        this.gameScene = gameScene;
         this.krpcConnection = krpcConnection;
-        this.krpc = krpc;
     }
 }

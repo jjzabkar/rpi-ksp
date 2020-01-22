@@ -1,4 +1,4 @@
-package com.jjz.hellopi.service.pi;
+package com.jjz.rpiksp.service.pi;
 
 import com.google.common.collect.ImmutableList;
 import com.pi4j.io.gpio.*;

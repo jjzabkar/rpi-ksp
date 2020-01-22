@@ -1,4 +1,4 @@
-package com.jjz.hellopi.config;
+package com.jjz.rpiksp.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

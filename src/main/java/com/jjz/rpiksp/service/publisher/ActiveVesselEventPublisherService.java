@@ -1,7 +1,7 @@
-package com.jjz.hellopi.service.publisher;
+package com.jjz.rpiksp.service.publisher;
 
-import com.jjz.hellopi.event.ActiveVesselEvent;
-import com.jjz.hellopi.event.SpaceCenterEvent;
+import com.jjz.rpiksp.event.ActiveVesselEvent;
+import com.jjz.rpiksp.event.SpaceCenterEvent;
 import krpc.client.RPCException;
 import krpc.client.Stream;
 import krpc.client.StreamException;

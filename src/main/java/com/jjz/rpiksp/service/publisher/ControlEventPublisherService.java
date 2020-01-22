@@ -1,9 +1,9 @@
-package com.jjz.hellopi.service.publisher;
+package com.jjz.rpiksp.service.publisher;
 
-import com.jjz.hellopi.event.ActiveVesselEvent;
-import com.jjz.hellopi.event.ControlEvent;
-import com.jjz.hellopi.event.flight.RcsButtonEvent;
-import com.jjz.hellopi.event.flight.SasButtonEvent;
+import com.jjz.rpiksp.event.ActiveVesselEvent;
+import com.jjz.rpiksp.event.ControlEvent;
+import com.jjz.rpiksp.event.flight.RcsButtonEvent;
+import com.jjz.rpiksp.event.flight.SasButtonEvent;
 import krpc.client.Stream;
 import krpc.client.services.SpaceCenter;
 import lombok.RequiredArgsConstructor;

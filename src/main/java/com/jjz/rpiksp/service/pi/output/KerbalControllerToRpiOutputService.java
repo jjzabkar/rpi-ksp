@@ -1,7 +1,7 @@
-package com.jjz.hellopi.service.pi.output;
+package com.jjz.rpiksp.service.pi.output;
 
-import com.jjz.hellopi.event.flight.RcsButtonEvent;
-import com.jjz.hellopi.event.flight.SasButtonEvent;
+import com.jjz.rpiksp.event.flight.RcsButtonEvent;
+import com.jjz.rpiksp.event.flight.SasButtonEvent;
 import com.pi4j.io.gpio.*;
 import krpc.client.RPCException;
 import krpc.client.StreamException;

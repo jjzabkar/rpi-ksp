@@ -1,4 +1,4 @@
-package com.jjz.hellopi.event.flight;
+package com.jjz.rpiksp.event.flight;
 
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;

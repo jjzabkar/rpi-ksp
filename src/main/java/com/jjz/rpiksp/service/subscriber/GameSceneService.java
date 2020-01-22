@@ -1,6 +1,6 @@
-package com.jjz.hellopi.service.subscriber;
+package com.jjz.rpiksp.service.subscriber;
 
-import com.jjz.hellopi.event.GameSceneEvent;
+import com.jjz.rpiksp.event.GameSceneEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.event.EventListener;
 import org.springframework.scheduling.annotation.Async;

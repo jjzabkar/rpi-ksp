@@ -1,6 +1,6 @@
-package com.jjz.hellopi.service.subscriber;
+package com.jjz.rpiksp.service.subscriber;
 
-import com.jjz.hellopi.event.ControlEvent;
+import com.jjz.rpiksp.event.ControlEvent;
 import krpc.client.Connection;
 import krpc.client.RPCException;
 import krpc.client.Stream;
@@ -10,14 +10,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.event.EventListener;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
-import reactor.core.publisher.EmitterProcessor;
 import reactor.core.publisher.Flux;
-import reactor.core.publisher.FluxSink;
 
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.atomic.AtomicReference;
-
-import static reactor.core.publisher.Flux.combineLatest;
 
 @Component
 @Slf4j
@@ -33,8 +29,8 @@ public class TelemetryService {
     private Flux<Float> rollFlux;
     private Flux<Float> pitchFlux;
 
-    @Async
-    @EventListener(ControlEvent.class)
+    @Async // TODO: UNCOMMENT
+    @EventListener(ControlEvent.class) // TODO: UNCOMMENT
     public void onControlEvent(ControlEvent event) {
         try {
             this.yawFlux = this.registerAndStartStream("getYaw", this.yaw, event.getKrpcConnection(), event.getControl());

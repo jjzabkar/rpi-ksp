@@ -1,6 +1,6 @@
-package com.jjz.hellopi.service.pi.input;
+package com.jjz.rpiksp.service.pi.input;
 
-import com.jjz.hellopi.event.ActiveVesselEvent;
+import com.jjz.rpiksp.event.ActiveVesselEvent;
 import com.pi4j.io.gpio.*;
 import com.pi4j.io.gpio.event.GpioPinDigitalStateChangeEvent;
 import com.pi4j.io.gpio.event.GpioPinListener;

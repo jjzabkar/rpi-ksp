@@ -1,4 +1,4 @@
-package com.jjz.hellopi.event;
+package com.jjz.rpiksp.event;
 
 import krpc.client.Connection;
 import krpc.client.services.SpaceCenter;

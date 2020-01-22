@@ -1,6 +1,6 @@
-package com.jjz.hellopi.service.publisher;
+package com.jjz.rpiksp.service.publisher;
 
-import com.jjz.hellopi.event.KrpcConnectedEvent;
+import com.jjz.rpiksp.event.KrpcConnectedEvent;
 import krpc.client.Connection;
 import krpc.client.RPCException;
 import krpc.client.services.KRPC;
